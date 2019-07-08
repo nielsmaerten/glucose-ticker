@@ -1,7 +1,7 @@
 {
   "name": "glucose-ticker",
   "productName": "glucose-ticker",
-  "version": "0.0.0",
+  "version": "0.1.0-alpha.1",
   "description": "Nightscout ticker that sits in your Windows Taskbar",
   "main": "src/index.js",
   "scripts": {
