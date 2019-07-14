@@ -1,5 +1,6 @@
 # Glucose Ticker
-Nightscout ticker that sits in your Windows Taskbar
+Nightscout ticker that sits in your Windows Taskbar  
+[Download for Windows](https://github.com/nielsmaerten/glucose-ticker/releases)
 
 **This project is in alpha. Expect bugs ;)**
 
