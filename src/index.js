@@ -106,9 +106,9 @@ const createWindow = () => {
   mainWindow.setMenu(menu)
 
   // Open the DevTools.
-  /*mainWindow.webContents.openDevTools({
+  false && mainWindow.webContents.openDevTools({
     mode: "bottom"
-  });*/
+  });
 
   // Create sharedObj on global scope
   global.sharedObj = {
