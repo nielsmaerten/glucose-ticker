@@ -25,7 +25,7 @@ function handleSquirrelEvent() {
   const rootAtomFolder = path.resolve(appFolder, '..');
   const updateDotExe = path.resolve(path.join(rootAtomFolder, 'Update.exe'));
   const exeName = path.basename(process.execPath);
-  const shortcutName = path.resolve(path.join(appFolder, 'start.bat'));
+  const shortcutName = path.resolve(path.join(appFolder, 'Start Glucose Ticker.bat'));
 
   const spawn = function (command, args) {
     let spawnedProcess, error;
