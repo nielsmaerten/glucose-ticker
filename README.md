@@ -2,6 +2,8 @@
 
 Your current blood sugar on the Windows taskbar
 
+[Download](https://github.com/nielsmaerten/glucose-ticker/releases)
+
 ## Screenshots:
 ![Screenshot1](/screenshot1.png)
 ![Screenshot2](/screenshot2.png)
