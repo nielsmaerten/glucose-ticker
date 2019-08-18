@@ -1,8 +1,8 @@
 {
   "name": "glucose-ticker",
-  "productName": "glucose-ticker",
+  "productName": "Glucose Ticker",
   "version": "0.2.0-beta.1",
-  "description": "Nightscout ticker that sits in your Windows Taskbar",
+  "description": "Current blood sugar on the taskbar",
   "main": "src/index.js",
   "scripts": {
     "start": "electron-forge start",
