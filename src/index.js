@@ -1,4 +1,5 @@
 const { app, BrowserWindow, ipcMain, Menu, MenuItem } = require('electron');
+const AutoLaunch = require("auto-launch");
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
@@ -40,17 +41,25 @@ function handleSquirrelEvent() {
     return spawn(updateDotExe, args);
   };
 
+  // Configure auto launch
+  let glucoseTickerAutoLauncher = new AutoLaunch({
+    name: "Glucose Ticker",
+    path: updateDotExe
+  });
+
   const squirrelEvent = process.argv[1];
   switch (squirrelEvent) {
     case '--squirrel-install':
     case '--squirrel-updated':
-      // Optionally do things such as:
-      // - Add your .exe to the PATH
-      // - Write to the registry for things like file associations and
-      //   explorer context menus
+      // Enable auto launch
+      glucoseTickerAutoLauncher.isEnabled().then(isEnabled => {
+        if (!isEnabled) {
+          glucoseTickerAutoLauncher.enable();
+        }
+      });      
 
       // Install desktop and start menu shortcuts
-      fs.writeFileSync(shortcutName, "start " + exeName)
+      fs.writeFileSync(shortcutName, "start " + updateDotExe)
       spawnUpdate(['--createShortcut', shortcutName]);
 
       setTimeout(app.quit, 1000);
@@ -59,6 +68,13 @@ function handleSquirrelEvent() {
     case '--squirrel-uninstall':
       // Undo anything you did in the --squirrel-install and
       // --squirrel-updated handlers
+      // Enable auto launch
+      glucoseTickerAutoLauncher.isEnabled().then(isEnabled => {
+        if (isEnabled) {
+          glucoseTickerAutoLauncher.disable();
+        }
+      });      
+
 
       // Remove desktop and start menu shortcuts
       spawnUpdate(['--removeShortcut', shortcutName]);
@@ -83,8 +99,8 @@ let mainWindow;
 const createWindow = () => {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 300,
-    height: 300,
+    width: 800,
+    height: 600,
     autoHideMenuBar: true,
     webPreferences: {
       nodeIntegration: true
