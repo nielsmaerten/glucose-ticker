@@ -6,10 +6,11 @@
   <title></title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css"
     integrity="sha256-vK3UTo/8wHbaUn+dTQD0X6dzidqc5l7gczvH+Bnowwk=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.1.2/tailwind.min.css" />
 </head>
 
 <body>
-  <div style="padding: 5px">
+  <div class="m-5">
     <div class="field">
       <label class="label">Nightscout Site</label>
       <div class="control">
@@ -20,21 +21,27 @@
       <label class="label">After saving, show this view:</label>
       <div class="select">
         <select id="view">
-          <option selected value="/clock-color.html">Color</option>
-          <option value="/">Full view</option>
-          <option value="/clock.html">Simple</option>
-          <option value="/bgclock.html">Clock</option>
+          <option selected value="/">Full view</option>
+
+          <option value="/clock/clock-color">Color</option>
+          <option value="/clock/clock">Simple</option>
+          <option value="/clock/bgclock">Clock</option>
+
+          <option value="/clock-color.html">Color (legacy)</option>
+          <option value="/clock.html">Simple (legacy)</option>
+          <option value="/bgclock.html">Clock (legacy)</option>
         </select>
       </div>
     </div>
     <div class="field">
       <div class="control">
-        <button class="button is-link is-small" onclick="saveUrl()">Save</button>
+        <button class="button is-link" onclick="saveUrl()">Save</button>
       </div>
     </div>
-    <div class="is-size-7">
-      <p>To reset settings: Press the <strong>Alt-key</strong></p>
-      <p>This tool is in alpha and probably buggy</p>
+    <div class="is-size-5">
+      <p>
+        (!!) If you ever want to change these settings, 
+        press the <img style="display: inline" src="assets/alt.svg" alt="Alt" title="Alt" class="h-8"> key</p>
     </div>
   </div>
   <script src="./renderer.js"></script>
