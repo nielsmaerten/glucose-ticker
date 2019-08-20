@@ -1,12 +1,20 @@
 // @ts-check
-"use strict";
+const path = require('path');
+const fs = require("fs");
+//const ChildProcess = require("child_process")
+
+const log = (msg) => {
+  var now = new Date().toISOString();
+  const logname = "install.log"
+  if (!fs.existsSync(logname)) {
+    fs.writeFileSync(logname, now + "\n")
+  }
+  fs.appendFileSync(logname, "" + now + ": " + msg + "\n")
+}
+
 (async function () {
   const { app, BrowserWindow, ipcMain, Menu, MenuItem } = require('electron');
-
-  // Handle creating/removing shortcuts on Windows when installing/uninstalling.
-  if (require('electron-squirrel-startup')) {
-    app.quit();
-  }
+  const ws = require('windows-shortcuts');
 
   // this should be placed at top of main.js to handle setup events quickly
   if (await handleSquirrelEvent()) {
@@ -19,17 +27,14 @@
       return false;
     }
 
-    const ChildProcess = require('child_process');
-    const path = require('path');
-    const fs = require("fs")
-
+    const exeName = "Glucose Ticker.exe";
     const appFolder = path.resolve(process.execPath, '..');
     const rootAtomFolder = path.resolve(appFolder, '..');
     const updateDotExe = path.resolve(path.join(rootAtomFolder, 'Update.exe'));
-    const exeName = path.resolve(path.join(rootAtomFolder, 'glucose-ticker.exe'));
-    const shortcutName = path.resolve(path.join(rootAtomFolder, 'Start Glucose Ticker.bat'));
+    const exePath = path.resolve(path.join(rootAtomFolder, exeName));
+    const bootstrapperPath = path.resolve(path.join(rootAtomFolder, 'Start Glucose Ticker.bat'));
 
-    const spawn = function (command, args) {
+    /*const spawn = function (command, args) {
       let spawnedProcess, error;
 
       try {
@@ -37,19 +42,47 @@
       } catch (error) { }
 
       return spawnedProcess;
-    };
+    };*/
 
-    const spawnUpdate = function (args) {
+    /*const spawnUpdate = function (args) {
       return spawn(updateDotExe, args);
-    };
+    };*/
+
+    const shortcuts = function (create) {
+      let shortcutName = "Glucose Ticker.lnk";
+      let startMenuPath = "%USERPROFILE%/AppData/Roaming/Microsoft/Windows/Start Menu/Programs"
+      let shortcutOptions = {
+        desc: "Glanceable glucose on the taskbar",
+        target: bootstrapperPath
+      }
+      let shortcuts = [
+        `%USERPROFILE%/Desktop/${shortcutName}`,
+        `${startMenuPath}/${shortcutName}`,
+        `${startMenuPath}/Startup/${shortcutName}`
+      ]
+
+      if (create) {
+        log("Creating shortcuts...")
+        shortcuts.forEach(s => ws.create(s, shortcutOptions))
+      } else {
+        log("Deleting shortcuts...")
+        shortcuts.forEach(s => fs.unlinkSync(s))
+      }
+
+    }
 
     const squirrelEvent = process.argv[1];
+    log("Handling squirrel event: " + squirrelEvent)
     switch (squirrelEvent) {
       case '--squirrel-install':
       case '--squirrel-updated':
-        // Install desktop and start menu shortcuts
-        fs.writeFileSync(shortcutName, "start " + exeName)
-        spawnUpdate(['--createShortcut', shortcutName]);
+
+        // Write .bat file that starts the app
+        fs.writeFileSync(bootstrapperPath, `"Glucose Ticker" /D "${rootAtomFolder}" "${exeName}"`)
+        log("Wrote " + bootstrapperPath)
+
+        // Create shortcuts
+        shortcuts(true)
 
         setTimeout(app.quit, 1000);
         return true;
@@ -59,7 +92,7 @@
         // --squirrel-updated handlers
 
         // Remove desktop and start menu shortcuts
-        spawnUpdate(['--removeShortcut', shortcutName]);
+        shortcuts(false)
 
         setTimeout(app.quit, 1000);
         return true;
@@ -109,6 +142,7 @@
     });
 
     // Create sharedObj on global scope
+    // @ts-ignore
     global.sharedObj = {
       lastUpdatedTime: 0,
       mainWindow,
@@ -152,6 +186,7 @@
   });
 
   ipcMain.on("set-url", (event, arg) => {
+    // @ts-ignore
     global.sharedObj.nsUrl = arg
     event.returnValue = "OK";
   })

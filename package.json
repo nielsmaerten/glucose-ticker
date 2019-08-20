@@ -1,7 +1,7 @@
 {
   "name": "glucose-ticker",
   "productName": "Glucose Ticker",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Current blood sugar on the taskbar",
   "main": "src/index.js",
   "scripts": {
@@ -50,7 +50,8 @@
     "node-fetch": "^2.6.0",
     "sharp": "^0.22.1",
     "svg.js": "^2.7.1",
-    "svgdom": "0.0.20"
+    "svgdom": "0.0.20",
+    "windows-shortcuts": "^0.1.6"
   },
   "devDependencies": {
     "@electron-forge/cli": "6.0.0-beta.39",
