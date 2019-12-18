@@ -39,16 +39,20 @@ const getOverlay = direction => {
     return nativeImage.createFromPath(overlayUrl)
 }
 
-const getStyles = value => {
+const getStyles = (value, ranges = {}) => {
+    let fontColor = "white";
+    if (value < ranges.low) fontColor = "red";
+    else if (value > ranges.high) fontColor = "yellow";
+
     return {
         bgColor: "black",
-        fontColor: "white",
+        fontColor,
         fontFamily: "Tahoma"
     }
 }
 
-module.exports = async (value, direction) => {
-    const style = getStyles(value);
+module.exports = async (value, direction, ranges) => {
+    const style = getStyles(value, ranges);
     const template = Buffer.from(
         getTemplate(value, style.bgColor, style.fontColor, style.fontFamily)
     )
