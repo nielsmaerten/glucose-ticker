@@ -185,9 +185,12 @@ const log = (msg) => {
     }
   });
 
-  ipcMain.on("set-url", (event, arg) => {
+  ipcMain.on("ipc-message", (event, arg) => {
     // @ts-ignore
-    global.sharedObj.nsUrl = arg
+    Object.assign(global.sharedObj, {
+      nsUrl: arg.nsUrl,
+      ranges: arg.ranges
+    })
     event.returnValue = "OK";
   })
 

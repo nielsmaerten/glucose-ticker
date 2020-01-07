@@ -24,7 +24,7 @@ const cron = async () => {
 
         // Pass the datapoint over to require("./set-icon")
         const setIcon = require("./set-icon");
-        setIcon(reading.value, reading.direction)
+        setIcon(reading.value, reading.direction, global.sharedObj.ranges)
     }
 
 }
