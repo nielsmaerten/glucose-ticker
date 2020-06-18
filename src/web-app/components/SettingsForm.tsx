@@ -1,5 +1,6 @@
 import React, { ChangeEvent, FormEvent } from "react";
 import { AppSettings } from "../../shared/constants";
+import Header from "./Header";
 
 const SettingsForm = (props: any) => {
   const settings: AppSettings = props.state;
@@ -19,12 +20,16 @@ const SettingsForm = (props: any) => {
 
   return (
     <form onSubmit={handleSubmit}>
+      <Header />
+      URL of your Nightscout site:
       <input
         type="text"
         name="nsUrl"
         value={settings.nsUrl}
         onChange={handleChange}
       />
+      <br />
+      Unit:
       <select
         name="unit"
         id="unit"
@@ -34,7 +39,8 @@ const SettingsForm = (props: any) => {
         <option value="mg/dl">mg/dl</option>
         <option value="mmol/l">mmol/l</option>
       </select>
-      <br />
+      {/* <br />
+      Nightscout View to show after saving (coming soon)
       <select
         name="view"
         id="view"
@@ -45,8 +51,9 @@ const SettingsForm = (props: any) => {
         <option value="bgclock">clock</option>
         <option value="clock-color">color</option>
         <option value="clock">simple</option>
-      </select>
+      </select> */}
       <br />
+      Icon background color:
       <input
         onChange={handleChange}
         value={settings.color_background}
@@ -54,6 +61,8 @@ const SettingsForm = (props: any) => {
         name="color_background"
         id="color_background"
       />
+      <br />
+      In-range BG color:
       <input
         onChange={handleChange}
         value={settings.color_text_inRange}
@@ -61,6 +70,8 @@ const SettingsForm = (props: any) => {
         name="color_text_inRange"
         id="color_text_inRange"
       />
+      <br />
+      Moderate-high BG color:
       <input
         onChange={handleChange}
         value={settings.color_text_moderate_high}
@@ -68,6 +79,8 @@ const SettingsForm = (props: any) => {
         name="color_text_moderate_high"
         id="color_text_moderate_high"
       />
+      <br />
+      High BG color:
       <input
         onChange={handleChange}
         value={settings.color_text_high}
@@ -75,6 +88,8 @@ const SettingsForm = (props: any) => {
         name="color_text_high"
         id="color_text_high"
       />
+      <br />
+      Moderate low BG color:
       <input
         onChange={handleChange}
         value={settings.color_text_moderate_low}
@@ -82,6 +97,8 @@ const SettingsForm = (props: any) => {
         name="color_text_moderate_low"
         id="color_text_moderate_low"
       />
+      <br />
+      Low BG color:
       <input
         onChange={handleChange}
         value={settings.color_text_low}
@@ -89,6 +106,8 @@ const SettingsForm = (props: any) => {
         name="color_text_low"
         id="color_text_low"
       />
+      <br />
+      Ranges: [high, moderate high, moderate low, low]:
       <br />
       <input
         onChange={handleChange}
@@ -119,6 +138,7 @@ const SettingsForm = (props: any) => {
         id="range_low"
       />
       <br />
+      Start app minimized:
       <input
         type="checkbox"
         onChange={handleChange}
@@ -126,8 +146,8 @@ const SettingsForm = (props: any) => {
         name="start_minimized"
         id="start_minimized"
       />
-
-      <input type="submit" value="Submit" />
+      <hr />
+      <input type="submit" value="Save settings" />
     </form>
   );
 };

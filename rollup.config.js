@@ -1,5 +1,6 @@
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
+import json from "@rollup/plugin-json";
 import copy from 'rollup-plugin-copy';
 
 export default [
@@ -21,7 +22,7 @@ export default [
             dir: "tmp/dist/html",
             format: "cjs"
         },
-        plugins: [commonjs(), resolve(), copy({
+        plugins: [json(), commonjs(), resolve(), copy({
             targets: [
                 { src: 'src/web-app/index.html', dest: 'tmp/dist/html/' }
             ]

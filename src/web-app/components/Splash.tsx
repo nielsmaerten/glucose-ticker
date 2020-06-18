@@ -10,11 +10,9 @@ export default (props: any) => {
 
   return (
     <div>
-      <button onClick={resetSettings}>
-        Click here if you want to change settings
-      </button>
+      <button onClick={resetSettings}>Click here to change settings</button>
       <h2>
-        Showing your Nightscout status in {props.s}{" "}
+        Showing your Nightscout in {props.s}{" "}
         {props.s === 1 ? "second" : "seconds"}
       </h2>
     </div>
