@@ -1,0 +1,33 @@
+name: Windows Build
+on:
+  push:
+    branches: release
+
+jobs:
+  build:
+    runs-on: windows-2019
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+    - uses: actions/checkout@v2
+      
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    
+    - run: yarn
+    - run: yarn build:app
+
+    - name: Upload app .exe
+      uses: actions/upload-artifact@v2
+      with:
+        name: GlucoseTicker-portable
+        path: dist/*.exe
+
+    - name: Upload zip
+      uses: actions/upload-artifact@v2
+      with:
+        name: GlucoseTicker
+        path: dist/win-unpacked

@@ -1,0 +1,5 @@
+appId: me.niels.glucoseticker
+icon: assets/glucoseticker.ico
+win:
+  target: portable
+  

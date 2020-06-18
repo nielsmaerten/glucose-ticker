@@ -1,62 +1,43 @@
 {
   "name": "glucose-ticker",
   "productName": "Glucose Ticker",
-  "version": "0.3.0",
-  "description": "Current blood sugar on the taskbar",
-  "main": "src/index.js",
+  "version": "0.4.0-alpha.1",
+  "description": "Live blood sugar on the Windows Taskbar",
+  "main": "tmp/dist/index.js",
   "scripts": {
-    "start": "electron-forge start",
-    "package": "electron-forge package"
+    "format": "prettier --write src/**/*",
+    "start": "yarn run build:ts && electron .",
+    "build:app": "yarn run build:ts && electron-builder",
+    "build:ts": "yarn run clean && tsc --project tsconfig.json && rollup --config && rimraf tmp/tsc/package.json",
+    "clean": "rimraf out && rimraf tmp && rimraf dist"
   },
   "private": true,
-  "keywords": [],
   "author": {
     "name": "Niels Maerten",
     "url": "https://github.com/nielsmaerten"
   },
   "license": "MIT",
-  "config": {
-    "forge": {
-      "packagerConfig": {},
-      "makers": [
-        {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "name": "glucose_ticker"
-          }
-        },
-        {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {}
-        }
-      ]
-    }
-  },
   "dependencies": {
-    "auto-launch": "^5.0.5",
-    "electron-squirrel-startup": "^1.0.0",
-    "node-fetch": "^2.6.0",
-    "sharp": "^0.22.1",
-    "svg.js": "^2.7.1",
-    "svgdom": "0.0.20",
-    "windows-shortcuts": "^0.1.6"
+    "axios": "^0.19.2",
+    "jimp": "^0.13.0"
   },
   "devDependencies": {
-    "@electron-forge/cli": "6.0.0-beta.39",
-    "@electron-forge/maker-deb": "6.0.0-beta.39",
-    "@electron-forge/maker-rpm": "6.0.0-beta.39",
-    "@electron-forge/maker-squirrel": "6.0.0-beta.39",
-    "@electron-forge/maker-zip": "6.0.0-beta.39",
-    "electron": "5.0.6"
+    "@rollup/plugin-commonjs": "^12.0.0",
+    "@rollup/plugin-json": "^4.0.3",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "@types/node": "^14.0.5",
+    "@types/react": "^16.9.35",
+    "@types/react-dom": "^16.9.8",
+    "electron": "^9.0.0",
+    "electron-builder": "^22.7.0",
+    "idb-keyval": "^3.2.0",
+    "prettier": "^2.0.5",
+    "react": "^16.13.1",
+    "react-countdown": "^2.2.1",
+    "react-dom": "^16.13.1",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.10.9",
+    "rollup-plugin-copy": "^3.3.0",
+    "typescript": "^3.9.3"
   }
 }

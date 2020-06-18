@@ -1,0 +1,22 @@
+{
+    "version": "0.2.0",
+    "configurations": [        
+        {
+            "type": "node-terminal",
+            "name": "Debug electron app",
+            "request": "launch",
+            "command": "yarn start",
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "node-terminal",
+            "name": "Debug react app",
+            "request": "launch",
+            "command": "yarn start",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "DEBUG": "true"
+            }
+        }
+    ]
+}
