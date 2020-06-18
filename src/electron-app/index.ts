@@ -11,6 +11,7 @@ app.on("window-all-closed", () => {
 
 ipcMain.on(IPC.updateSettings, (event, state) => {
   AppState.setState(state);
+  app.setLoginItemSettings({openAtLogin: !!state.start_at_login})
 });
 
 ipcMain.on(IPC.minimize, () => {

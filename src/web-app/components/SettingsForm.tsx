@@ -146,6 +146,15 @@ const SettingsForm = (props: any) => {
         name="start_minimized"
         id="start_minimized"
       />
+      <br />
+      Start app when I log in:
+      <input
+        type="checkbox"
+        onChange={handleChange}
+        checked={settings.start_at_login}
+        name="start_at_login"
+        id="start_at_login"
+      />
       <hr />
       <input type="submit" value="Save settings" />
     </form>

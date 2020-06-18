@@ -38,6 +38,7 @@ export const defaultSettings: AppSettings = {
   range_moderate_low: 70,
   start_minimized: true,
   saved: false,
+  start_at_login: true,
 };
 
 export interface AppSettings {
@@ -55,5 +56,6 @@ export interface AppSettings {
   range_moderate_low: number;
   range_moderate_high: number;
   start_minimized: boolean;
+  start_at_login: boolean;
   saved: boolean;
 }
