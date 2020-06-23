@@ -1,10 +1,13 @@
 import React from "react";
 import * as storage from "idb-keyval";
-import { STORAGE_KEY } from "../../shared/constants";
+import { STORAGE_KEY, AppSettings } from "../../shared/constants";
 
 export default (props: any) => {
   const resetSettings = async () => {
-    await storage.del(STORAGE_KEY);
+    const settings = await storage.get<AppSettings>(STORAGE_KEY);
+    settings.saved = false;
+    settings.start_minimized = false;
+    await storage.set(STORAGE_KEY, settings);
     window.location.reload();
   };
 

@@ -23,7 +23,7 @@ export const MGDL_TO_MMOLL = 18;
 export const OPEN_DEV_TOOLS = process.env.DEBUG === "true";
 
 export const defaultSettings: AppSettings = {
-  nsUrl: "https://YOUR-SITE.herokuapp.com",
+  nsUrl: "http://example.herokuapp.com",
   unit: Unit.mg_dl,
   view: View.full,
   color_background: "#000000",
