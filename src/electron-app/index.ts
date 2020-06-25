@@ -22,6 +22,10 @@ app.on("ready", () => {
   initSettingsWindow();
 });
 
+app.on("browser-window-focus", () => {
+  GlucoseWatcher.Instance().forceUpdate();
+});
+
 // Suppress Electron deprecation notice
 app.allowRendererProcessReuse = true;
 

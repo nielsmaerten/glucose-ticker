@@ -28,6 +28,12 @@ export default class GlucoseWatcher {
     this.intervalHandle && clearInterval(this.intervalHandle);
   };
 
+  public forceUpdate = () => {
+    if (!this.currentGlucose) return;
+    this.currentGlucose.timestamp = 0;
+    this.runCronJob();
+  };
+
   private onStateChange = (settings: AppSettings) => {
     console.log("Updating internal state");
     this.nightscoutAPI = new NightscoutAPI(settings.nsUrl, settings.unit);
