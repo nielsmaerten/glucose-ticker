@@ -21,10 +21,12 @@ jobs:
   #  - run: yarn build:app
 
     - name: Download Advanced Installer
-      run: curl.exe --output $GITHUB_WORKSPACE\advinst.msi --url ${{ secrets.AdvancedInstallerMsi }}
+      working-directory: ${env:GITHUB_WORKSPACE}
+      run: curl.exe --output advinst.msi --url ${{ secrets.AdvancedInstallerMsi }}
     
     - name: Install Advanced Installer
-      run: $GITHUB_WORKSPACE\advinst.msi /quiet
+      working-directory: ${env:GITHUB_WORKSPACE}
+      run: advinst.msi /quiet
     
     - name: Build GlucoseTicker installer
       working-directory: C:\Program Files (x86)\Caphyon\Advanced Installer 17.1.2\bin\x86
