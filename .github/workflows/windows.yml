@@ -1,7 +1,7 @@
 name: Windows Build
 on:
   push:
-    branches: release
+    branches: ci
 
 jobs:
   build:
@@ -20,14 +20,13 @@ jobs:
     - run: yarn
     - run: yarn build:app
 
-    - name: Upload app .exe
-      uses: actions/upload-artifact@v2
-      with:
-        name: GlucoseTicker-portable
-        path: dist/*.exe
-
-    - name: Upload zip
-      uses: actions/upload-artifact@v2
-      with:
-        name: GlucoseTicker
-        path: dist/win-unpacked
+    - name: Download Advanced Installer
+      run: curl.exe --output advinst.msi --url ${{ secrets.AdvancedInstallerMsi }}
+    
+    - name: Install Advanced Installer
+      run: advinst.msi /q
+    
+    - name: Build GlucoseTicker installer
+      working-directory: C:\Program Files (x86)\Caphyon\Advanced Installer 17.1.2\bin\x86
+      run: .\AdvancedInstaller.com /rebuild '$GITHUB_WORKSPACE\glucose-ticker\assets\advanced-installer-project\Glucose Ticker.aip'
+      
