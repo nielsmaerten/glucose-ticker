@@ -1,13 +1,13 @@
 {
   "name": "glucose-ticker",
   "productName": "Glucose Ticker",
-  "version": "0.4.0-alpha.3",
+  "version": "0.4.1",
   "description": "Live blood sugar on the Windows Taskbar",
   "main": "tmp/dist/index.js",
   "scripts": {
     "format": "prettier --write src/**/*",
     "start": "yarn run build:ts && electron .",
-    "build:app": "yarn run build:ts && electron-builder",
+    "build:app": "yarn run build:ts && electron-builder --dir",
     "build:ts": "yarn run clean && tsc --project tsconfig.json && rollup --config && rimraf tmp/tsc/package.json",
     "clean": "rimraf out && rimraf tmp && rimraf dist"
   },
