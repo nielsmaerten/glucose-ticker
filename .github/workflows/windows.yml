@@ -10,23 +10,23 @@ jobs:
       matrix:
         node-version: [14.x]
     steps:
-    - uses: actions/checkout@v2
+    #- uses: actions/checkout@v2
       
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
+    #- name: Use Node.js ${{ matrix.node-version }}
+    #  uses: actions/setup-node@v1
+    #  with:
+    #    node-version: ${{ matrix.node-version }}
     
   #  - run: yarn
   #  - run: yarn build:app
 
     - name: Download Advanced Installer
-      run: curl.exe --output ${env:GITHUB_WORKSPACE}\advinst.msi --url ${{ secrets.AdvancedInstallerMsi }}
+      run: curl.exe --output $GITHUB_WORKSPACE\advinst.msi --url ${{ secrets.AdvancedInstallerMsi }}
     
     - name: Install Advanced Installer
-      run: ${env:GITHUB_WORKSPACE}\advinst.msi /quiet
+      run: $GITHUB_WORKSPACE\advinst.msi /quiet
     
     - name: Build GlucoseTicker installer
       working-directory: C:\Program Files (x86)\Caphyon\Advanced Installer 17.1.2\bin\x86
-      run: .\AdvancedInstaller.com /rebuild '${env:GITHUB_WORKSPACE}\glucose-ticker\assets\advanced-installer-project\Glucose Ticker.aip'
+      run: .\AdvancedInstaller.com /rebuild '$GITHUB_WORKSPACE\glucose-ticker\assets\advanced-installer-project\Glucose Ticker.aip'
       
