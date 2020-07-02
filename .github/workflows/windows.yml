@@ -24,9 +24,9 @@ jobs:
       run: curl.exe --output advinst.msi --url ${{ secrets.AdvancedInstallerMsi }}
     
     - name: Install Advanced Installer
-      run: advinst.msi /q
+      run: advinst.msi /quiet
     
     - name: Build GlucoseTicker installer
       working-directory: C:\Program Files (x86)\Caphyon\Advanced Installer 17.1.2\bin\x86
-      run: .\AdvancedInstaller.com /rebuild '$GITHUB_WORKSPACE\glucose-ticker\assets\advanced-installer-project\Glucose Ticker.aip'
+      run: .\AdvancedInstaller.com /rebuild '${env:GITHUB_WORKSPACE}$\glucose-ticker\assets\advanced-installer-project\Glucose Ticker.aip'
       
