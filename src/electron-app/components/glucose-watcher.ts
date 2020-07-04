@@ -12,7 +12,6 @@ export default class GlucoseWatcher {
     return this._instance;
   }
 
-  private lock: boolean = false;
   private nightscoutAPI!: NightscoutAPI;
   private currentGlucose!: GlucoseStatus;
   private settings!: AppSettings;
@@ -60,17 +59,12 @@ export default class GlucoseWatcher {
     // Bail if: API not initialized
     if (!this.nightscoutAPI) return;
 
-    // Bail if: other cron job is currently running
-    if (this.lock) return;
-    else this.lock = true;
-
     console.log("Fetching new glucose value");
     this.currentGlucose = await this.nightscoutAPI.getCurrentStatus();
 
     // Refresh the app's icon
     const icon = new AppIcon(this.settings, this.currentGlucose);
     AppState.mainWindow.setIcon(await icon.toNativeImage());
-    this.lock = false;
   };
 }
 

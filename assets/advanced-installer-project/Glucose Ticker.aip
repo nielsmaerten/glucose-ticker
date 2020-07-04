@@ -13,10 +13,10 @@
     <ROW Property="ARPURLUPDATEINFO" Value="https://github.com/nielsmaerten/glucose-ticker/releases"/>
     <ROW Property="LIMITUI" MultiBuildValue="DefaultBuild:1"/>
     <ROW Property="Manufacturer" Value="Diabase.app"/>
-    <ROW Property="ProductCode" Value="1033:{0BCB1E54-FF2A-4D96-AB02-1BD510E936B6} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{695DED02-44F4-4B3C-8B7C-5B42716ADC19} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Glucose Ticker"/>
-    <ROW Property="ProductVersion" Value="0.4.1.0" Type="32" TargetFile="GlucoseTicker.exe"/>
+    <ROW Property="ProductVersion" Value="0.4.2.0" Type="32" TargetFile="GlucoseTicker.exe"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="UpgradeCode" Value="{B3CA8132-2343-49AE-89AF-440536B1E8DA}"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>

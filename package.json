@@ -7,7 +7,8 @@
   "scripts": {
     "format": "prettier --write src/**/*",
     "start": "yarn run build:ts && electron .",
-    "build:app": "yarn run build:ts && electron-builder --dir",
+    "build:app:unpacked": "yarn run build:ts && electron-builder --dir",
+    "build:app:portable": "yarn run build:ts && electron-builder",
     "build:ts": "yarn run clean && tsc --project tsconfig.json && rollup --config && rimraf tmp/tsc/package.json",
     "clean": "rimraf out && rimraf tmp && rimraf dist"
   },
