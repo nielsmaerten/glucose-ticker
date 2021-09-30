@@ -17,11 +17,23 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     
-    - run: yarn
-    - run: yarn build:app:unpacked
+    - name: Install dependencies
+      run: yarn
 
-    - name: Upload zip
+    - name: Compile source
+      run: yarn build:app:unpacked
+
+    - name: Upload portable version
       uses: actions/upload-artifact@v2
       with:
         name: GlucoseTicker
         path: dist/win-unpacked
+
+    - name: Install InnoSetup
+      uses: crazy-max/ghaction-chocolatey@v1
+      with:
+        args: install innosetup --no-progress -y
+    
+    - name: Build Setup
+      working-directory: dist
+      run: iscc setup-script.iss /version DEV
