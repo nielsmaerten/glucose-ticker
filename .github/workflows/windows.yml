@@ -43,4 +43,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: GlucoseTicker-${{ steps.packagejson.outputs.version }}-setup
-        path: dist/GlucoseTicker-setup.exe
+        path: dist/GlucoseTicker-${{ steps.packagejson.outputs.version }}-setup.exe
