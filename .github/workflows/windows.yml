@@ -36,11 +36,11 @@ jobs:
     - name: Upload portable version
       uses: actions/upload-artifact@v2
       with:
-        name: GlucoseTicker-portable
+        name: GlucoseTicker-${{ steps.packagejson.outputs.version }}-portable
         path: dist/win-unpacked
 
     - name: Upload installer
       uses: actions/upload-artifact@v2
       with:
-        name: GlucoseTicker-setup
+        name: GlucoseTicker-${{ steps.packagejson.outputs.version }}-setup
         path: dist/GlucoseTicker-setup.exe
