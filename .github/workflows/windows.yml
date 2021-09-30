@@ -1,7 +1,7 @@
 name: Windows Build
 on:
   push:
-    branches: master
+    branches: [master]
 
 jobs:
   build:
@@ -31,11 +31,6 @@ jobs:
         name: GlucoseTicker
         path: dist/win-unpacked
 
-    # - name: Install InnoSetup
-    #   uses: crazy-max/ghaction-chocolatey@v1
-    #   with:
-    #     args: install innosetup --no-progress -y
-    
     - name: Build installer
-      working-directory: dist
+      working-directory: assets
       run: iscc setup-script.iss
