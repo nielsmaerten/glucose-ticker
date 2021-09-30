@@ -9,8 +9,10 @@ jobs:
     strategy:
       matrix:
         node-version: [14.x]
+
     steps:
-    - uses: actions/checkout@v2
+    - name: Clone repo
+      uses: actions/checkout@v2
       
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
@@ -29,11 +31,11 @@ jobs:
         name: GlucoseTicker
         path: dist/win-unpacked
 
-    - name: Install InnoSetup
-      uses: crazy-max/ghaction-chocolatey@v1
-      with:
-        args: install innosetup --no-progress -y
+    # - name: Install InnoSetup
+    #   uses: crazy-max/ghaction-chocolatey@v1
+    #   with:
+    #     args: install innosetup --no-progress -y
     
-    - name: Build Setup
+    - name: Build installer
       working-directory: dist
-      run: iscc setup-script.iss /version DEV
+      run: iscc setup-script.iss
