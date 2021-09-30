@@ -31,7 +31,7 @@ jobs:
 
     - name: Build installer
       working-directory: assets
-      run: iscc setup-script.iss /Dversion=${{ steps.projectinfo.outputs.version }}
+      run: iscc setup-script.iss /Dversion=${{ steps.packagejson.outputs.version }}
           
     - name: Upload portable version
       uses: actions/upload-artifact@v2
