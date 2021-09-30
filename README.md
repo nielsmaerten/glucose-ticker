@@ -8,5 +8,5 @@ Your current blood sugar on the Windows taskbar
 ### Screenshots:
 ![Screenshot1](/assets/screenshot1.jpg)
 ![Screenshot with mmol/l](https://i.imgur.com/Vvdnbf7.png)
-![Screenshot3](/assets/screenshot3.jgp)
+![Screenshot3](/assets/screenshot3.jpg)
 ![Screenshot2](/assets/screenshot2.jpg)
