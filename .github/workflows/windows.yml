@@ -22,12 +22,16 @@ jobs:
     - name: Install dependencies
       run: yarn
 
+    - name: Get package version
+      id: package-version
+      uses: martinbeentjes/npm-get-version-action@master
+
     - name: Compile source
       run: yarn build:app:unpacked
 
     - name: Build installer
       working-directory: assets
-      run: iscc setup-script.iss /Dversion=1.0.0
+      run: iscc setup-script.iss /Dversion=${{ steps.package-version.outputs.current-version }}
           
     - name: Upload portable version
       uses: actions/upload-artifact@v2
