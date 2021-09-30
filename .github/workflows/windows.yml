@@ -32,5 +32,10 @@ jobs:
     - name: Upload portable version
       uses: actions/upload-artifact@v2
       with:
-        name: GlucoseTicker
+        name: GlucoseTicker-portable
         path: dist/win-unpacked
+
+    - name: Upload installer
+      uses: actions/upload-artifact@v2
+      with:
+        path: dist/GlucoseTicker-setup.exe
