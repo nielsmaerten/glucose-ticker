@@ -1,11 +1,11 @@
 name: Windows Build
 on:
   push:
-    branches: release
+    branches: master
 
 jobs:
   build:
-    runs-on: windows-2019
+    runs-on: windows-latest
     strategy:
       matrix:
         node-version: [14.x]
@@ -18,13 +18,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     
     - run: yarn
-    - run: yarn build:app
-
-    - name: Upload app .exe
-      uses: actions/upload-artifact@v2
-      with:
-        name: GlucoseTicker-portable
-        path: dist/*.exe
+    - run: yarn build:app:unpacked
 
     - name: Upload zip
       uses: actions/upload-artifact@v2
