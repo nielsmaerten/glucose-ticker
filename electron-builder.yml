@@ -3,9 +3,8 @@ icon: assets/glucoseticker.ico
 productName: "Glucose Ticker"
 copyright: "Copyright - Niels Maerten"
 win:
-  target: portable
+  target: dir
   publisherName: "Niels Maerten"
-  artifactName: "Glucose Ticker.exe"
   files: 
     - tmp/dist/**/*
   
