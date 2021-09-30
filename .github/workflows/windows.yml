@@ -25,12 +25,12 @@ jobs:
     - name: Compile source
       run: yarn build:app:unpacked
 
+    - name: Build installer
+      working-directory: assets
+      run: iscc setup-script.iss /Dversion=1.0.0
+          
     - name: Upload portable version
       uses: actions/upload-artifact@v2
       with:
         name: GlucoseTicker
         path: dist/win-unpacked
-
-    - name: Build installer
-      working-directory: assets
-      run: iscc setup-script.iss
