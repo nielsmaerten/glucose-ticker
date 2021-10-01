@@ -21,6 +21,7 @@ export const API_PATH = "/api/v1/entries/current.json";
 //export const ICON_TEXT_MARGIN = 10;
 export const MGDL_TO_MMOLL = 18;
 export const OPEN_DEV_TOOLS = process.env.DEBUG === "true";
+export const DONATE_LINK = "https://go.niels.me/coffee";
 
 export const defaultSettings: AppSettings = {
   nsUrl: "http://example.herokuapp.com",

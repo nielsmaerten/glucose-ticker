@@ -63,7 +63,7 @@ const App = () => {
           );
         } else {
           window.location.href = settings.nsUrl;
-          return <p>Redirecting ...</p>;
+          return <p>Getting Nightscout ...</p>;
         }
       }}
     ></Countdown>

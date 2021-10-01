@@ -1,6 +1,6 @@
 import React from "react";
 import * as storage from "idb-keyval";
-import { STORAGE_KEY, AppSettings } from "../../shared/constants";
+import { STORAGE_KEY, AppSettings, DONATE_LINK } from "../../shared/constants";
 
 export default (props: any) => {
   const resetSettings = async () => {
@@ -11,6 +11,11 @@ export default (props: any) => {
     window.location.reload();
   };
 
+  const onDonateClick = (e: any) => {
+    e.preventDefault();
+    require("electron").shell.openExternal(DONATE_LINK);
+  };
+
   return (
     <div>
       <button onClick={resetSettings}>Click here to change settings</button>
@@ -18,6 +23,13 @@ export default (props: any) => {
         Showing your Nightscout in {props.s}{" "}
         {props.s === 1 ? "second" : "seconds"}
       </h2>
+      <h4>
+        Did you like this app? Maybe consider buying me{" "}
+        <a href="" onClick={onDonateClick}>
+          a coffee
+        </a>
+        {" ☕"}
+      </h4>
     </div>
   );
 };
