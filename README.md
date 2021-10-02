@@ -1,4 +1,4 @@
-# Nightscout Buddy for Windows
+# Glucose Ticker for Windows
 
 Always see your current blood sugar level on the Taskbar.
 
