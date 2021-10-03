@@ -1,9 +1,9 @@
 # Glucose Ticker for Windows
 
-Always see your current blood sugar level on the Taskbar.
-
-Here's what it looks like. More screenshots [here](./SCREENSHOTS.md).
-![Screenshot1](./screenshots/default.jpg)
+Always see your current blood sugar level on the Taskbar.  
+Here's what it looks like:  
+![Screenshot1](./screenshots/default.jpg)  
+More screenshots [here](./SCREENSHOTS.md).
 
 ## Download
 
@@ -16,8 +16,7 @@ Here's what it looks like. More screenshots [here](./SCREENSHOTS.md).
 
 TLDR: **Relax; it's fine!** 
 
-Windows shows this warning because the app is not [digitally signed](https://www.google.com/search?q=microsoft+authenticode).
-
+Windows shows this warning because the app is not [digitally signed](https://www.google.com/search?q=microsoft+authenticode). 
 Digitial signatures are expensive, and since this is a hobby-project I didn't want to pay for one.
 [Click here](https://www.virustotal.com/gui/url/0a66fe671d842b7d86e6a11be59f26a6d9cedaca3a21520c1f430c6dad56a5d5?nocache=1) for a report from VirusTotal: all virusscanners agree this app is safe.
 
