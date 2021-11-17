@@ -9,7 +9,7 @@ NB: To use this app, you'll need a [Nightscout](http://www.nightscout.info/) sit
 
 ## Download
 
-* [For Windows 10](https://github.com/nielsmaerten/glucose-ticker/releases)
+* [For Windows](https://github.com/nielsmaerten/glucose-ticker/releases)
 * Looking for a Mac alternative? Check out: https://github.com/mddub/nightscout-osx-menubar
 
 ## FAQ
