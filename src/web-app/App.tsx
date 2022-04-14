@@ -47,6 +47,20 @@ const App = () => {
     ></SettingsForm>
   );
 
+  const loadSettings = () => {
+    // Fetch settings from IndexedDB
+    storage.get<AppSettings>(STORAGE_KEY).then((settings: AppSettings) => {
+      setInitialized(true);
+
+      // If settings exist, configure Electron process
+      if (settings) {
+        setSettings(settings);
+        ipcRenderer.send(IPC.updateSettings, settings);
+        if (settings.start_minimized) ipcRenderer.send(IPC.minimize);
+      }
+    });
+  };
+
   // Renders the Splash component at first,
   // then redirects to Nightscout after countdown hits 0.
   const renderCountdown = () => (
@@ -70,20 +84,7 @@ const App = () => {
   );
 
   // This effect runs once after mounting <App/>
-  useEffect(() => {
-    (async () => {
-      // Fetch settings from IndexedDB
-      const settings = await storage.get<AppSettings>(STORAGE_KEY);
-      setInitialized(true);
-
-      // If settings exist, configure Electron process
-      if (settings) {
-        setSettings(settings);
-        ipcRenderer.send(IPC.updateSettings, settings);
-        if (settings.start_minimized) ipcRenderer.send(IPC.minimize);
-      }
-    })();
-  }, []);
+  useEffect(loadSettings, []);
 
   // Print init message while we wait for Settings
   // to be loaded by useEffect()

@@ -14,6 +14,7 @@ ipcMain.on(IPC.updateSettings, (event, state) => {
 });
 
 ipcMain.on(IPC.minimize, () => {
+  AppState.mainWindow.focus();
   AppState.mainWindow.minimize();
 });
 
