@@ -2,7 +2,7 @@
 
 Always see your current blood sugar level on the Taskbar.  
 Here's what it looks like:  
-![Screenshot1](./screenshots/default.jpg)  
+![Screenshot1](./screenshots/win-11.png)  
 More screenshots [here](./SCREENSHOTS.md).  
 
 NB: To use this app, you'll need a [Nightscout](http://www.nightscout.info/) site.
