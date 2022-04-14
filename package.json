@@ -1,7 +1,7 @@
 {
   "name": "glucose-ticker",
   "productName": "Glucose Ticker",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Live blood sugar on the Windows Taskbar",
   "main": "tmp/dist/index.js",
   "scripts": {
