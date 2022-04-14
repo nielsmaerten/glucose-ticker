@@ -2,6 +2,9 @@
 Both mg/dl and mmol/l are supported.  
 <img src="./screenshots/default.jpg" style="zoom: 50%;" />
 
+Windows 11:
+<img src="./screenshots/win-11.png" style="zoom:50%;">
+
 ### Color changes when out of range :
 You can customize both color and your preferred range.  
 <img src="./screenshots/out-of-range.png" alt="out-of-range"  />
