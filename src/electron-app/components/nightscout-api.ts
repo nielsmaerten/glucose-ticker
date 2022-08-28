@@ -1,5 +1,6 @@
 import { URL } from "url";
 import axios from "axios";
+import https from "https";
 import { API_PATH, Unit, MGDL_TO_MMOLL } from "../../shared/constants";
 
 export default class NightscoutAPI {
@@ -10,8 +11,15 @@ export default class NightscoutAPI {
   }
 
   async getCurrentStatus(): Promise<GlucoseStatus> {
-    const response = await axios.get(this.url.href);
-    if (response.status !== 200) {
+    let response;
+    try {
+      response = await axios.get(this.url.href, {
+        httpsAgent: new https.Agent({
+          rejectUnauthorized: false,
+        }),
+      });
+    } catch (error) {
+      console.error("Error fetching current glucose", error);
       return {
         success: false,
         timestamp: -1,
