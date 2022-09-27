@@ -29,6 +29,9 @@ jobs:
     - name: Compile source
       run: yarn build:app:unpacked
 
+    - name: Compile helper
+      run: yarn build:helper
+
     - name: Build installer
       working-directory: assets
       run: iscc setup-script.iss /Dversion=${{ steps.packagejson.outputs.version }}

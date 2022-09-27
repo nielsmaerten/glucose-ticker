@@ -1,6 +1,6 @@
 appId: me.niels.glucoseticker
 icon: assets/glucoseticker.ico
-productName: "Glucose Ticker"
+productName: "glucose-ticker-base"
 copyright: "Copyright - Niels Maerten"
 win:
   target: dir
