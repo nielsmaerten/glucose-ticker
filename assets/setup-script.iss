@@ -35,7 +35,6 @@ Name: "autostart"; Description: "Auto-start {#MyAppName} when I log in"; Flags: 
 
 [Files]
 Source: "{#MyAppIcon}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\dist\win-unpacked\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
