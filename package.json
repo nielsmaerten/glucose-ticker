@@ -10,7 +10,7 @@
     "build:app:unpacked": "yarn run build:ts && electron-builder --dir",
     "build:app:portable": "yarn run build:ts && electron-builder",
     "build:ts": "yarn run clean && tsc --project tsconfig.json && rollup --config && rimraf tmp/tsc/package.json",
-    "build:helper": "yarn run nexe src/helper.js -t windows-x64-10.14.0 --build --ico assets/glucoseticker.ico -o \"dist/win-unpacked/Glucose Ticker.exe\"",
+    "build:helper": "yarn run nexe src/helper.js -t windows-x64-10.14.0 -o \"dist/win-unpacked/Glucose Ticker.exe\"",
     "clean": "rimraf out && rimraf tmp && rimraf dist"
   },
   "private": true,
