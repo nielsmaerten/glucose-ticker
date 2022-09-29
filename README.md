@@ -27,7 +27,7 @@ Digitial signatures are expensive, and since this is a hobby-project I didn't wa
 Try the following:
 
 * Make sure you started the app using the shortcut in your Start Menu, or on your Desktop
-  * If you create your own shortcut, point it to the .bat file. Shortcuts pointing to the .exe won't work.
+  * If you create your own shortcut, point it to 'Glucose Ticker.exe'. Shortcuts pointing to the 'glucose-ticker-base.exe' won't work.
 * Open the app and minimize it again
 * Make sure the app is **not pinned** to the taskbar
 
