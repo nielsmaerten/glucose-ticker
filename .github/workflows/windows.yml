@@ -26,7 +26,7 @@ jobs:
 
     - name: Read package JSON
       id: packagejson
-      uses: gregoranders/nodejs-project-info@v0.0.12
+      uses: gregoranders/nodejs-project-info@v0.0.20
 
     - name: Compile source
       run: yarn build:app:unpacked
