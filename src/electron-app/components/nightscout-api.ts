@@ -49,7 +49,7 @@ export default class NightscoutAPI {
 
 export interface GlucoseStatus {
   success: boolean;
-  value: Number;
+  value: number;
   unit?: Unit;
-  timestamp: Number;
+  timestamp: number;
 }

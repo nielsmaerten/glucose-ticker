@@ -15,9 +15,22 @@ export default class AppIcon {
   ) {}
 
   public async toNativeImage(): Promise<Electron.NativeImage> {
-    const txtColor = this.getTextColor();
-    const bgColor = this.getBackgroundColor();
-    const text = this.glucoseStatus.value.toString();
+    // Defaults:
+    let txtColor = this.getTextColor();
+    let bgColor = this.getBackgroundColor();
+    let text = this.glucoseStatus.value.toString();
+
+    // Change icon in case of errors
+    // If last glucose value is old (> 30 minutes) text = '~'
+    if (this.glucoseStatus.timestamp.valueOf() < new Date().getTime() - 30 * 60 * 1000) {
+      text = '~';
+      txtColor = this.settings.color_text_inRange;
+    }
+    // If success is false, text = '??'
+    else if (!this.glucoseStatus.success) {
+      text = '??';
+      txtColor = this.settings.color_text_inRange;
+    }
 
     const png = await this.renderPng(text, txtColor, bgColor);
     return nativeImage.createFromBuffer(png);
