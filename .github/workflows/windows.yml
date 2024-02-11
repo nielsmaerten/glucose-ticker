@@ -11,10 +11,10 @@ jobs:
 
     steps:
     - name: Clone repo
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       
     - name: Set up NodeJS
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version-file: '.nvmrc'
     
@@ -23,7 +23,7 @@ jobs:
 
     - name: Read package JSON
       id: packagejson
-      uses: gregoranders/nodejs-project-info@v0.0.20
+      uses: gregoranders/nodejs-project-info@v0.0.21
 
     - name: Compile source
       run: yarn build:app:unpacked
@@ -36,13 +36,13 @@ jobs:
       run: iscc setup-script.iss /Dversion=${{ steps.packagejson.outputs.version }}
           
     - name: Upload portable version
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: GlucoseTicker-${{ steps.packagejson.outputs.version }}-portable
         path: dist/win-unpacked
 
     - name: Upload installer
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: GlucoseTicker-${{ steps.packagejson.outputs.version }}-setup
         path: dist/GlucoseTicker-${{ steps.packagejson.outputs.version }}-setup.exe
