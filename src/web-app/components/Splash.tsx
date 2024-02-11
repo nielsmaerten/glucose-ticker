@@ -24,11 +24,13 @@ export default (props: any) => {
         {props.s === 1 ? "second" : "seconds"}
       </h2>
       <h4>
-        Did you like this app? Maybe consider buying me{" "}
-        <a href="" onClick={onDonateClick}>
-          a coffee
-        </a>
-        {" ☕"}
+      Found this app helpful?
+      Consider.
+      {" "}
+      <a href="" onClick={onDonateClick}>supporting my caffeine addiction</a>
+      {" "}
+      to fuel more creations like this.
+      {" ☕"}
       </h4>
     </div>
   );

@@ -1,46 +1,50 @@
 # Glucose Ticker for Windows
+Your latest glucose reading. Just a quick
+glance away on the Windows Taskbar:
+![Screenshot1](./screenshots/win-11.png)
 
-Always see your current blood sugar level on the Taskbar.  
-Here's what it looks like:  
-![Screenshot1](./screenshots/win-11.png)  
-More screenshots [here](./SCREENSHOTS.md).  
 
-NB: To use this app, you'll need a [Nightscout](http://www.nightscout.info/) site.
+## Requirements
+
+- A **[nightscout site](https://www.nightscout.info)**.  
+  This is where Glucose Ticker will get your values. 
+
+- **Windows** 10 or higher.  
+  (Looking for a **Mac** alternative?
+  Check out [Nightscout OSX Menubar](https://github.com/mddub/nightscout-osx-menubar))
+
 
 ## Download
 
-* [For Windows](https://github.com/nielsmaerten/glucose-ticker/releases)
-* Looking for a Mac alternative? Check out: https://github.com/mddub/nightscout-osx-menubar
+Get the latest version [here](https://github.com/nielsmaerten/glucose-ticker/releases).
 
 ## FAQ
 
-### Windows says this app is unsafe?
+### Understanding "Windows Protected your PC"
+Windows SmartScreen can occasionally flag Glucose Ticker as unrecognized due to its limited user base. This is a common security measure for less widely distributed applications. It does not indicate an actual security risk.
 
-TLDR: **Relax; it's fine!** 
+#### How to Proceed with the Alert
+1. When prompted by SmartScreen, select **More info**.
+2. Then choose **Run anyway** to start the Glucose Ticker.
 
-Windows shows this warning because the app is not [digitally signed](https://www.google.com/search?q=microsoft+authenticode). 
-Digitial signatures are expensive, and since this is a hobby-project I didn't want to pay for one.
-[Click here](https://www.virustotal.com/gui/url/0a66fe671d842b7d86e6a11be59f26a6d9cedaca3a21520c1f430c6dad56a5d5?nocache=1) for a report from VirusTotal: all virusscanners agree this app is safe.
+#### So how do I know it's safe?
+Want to double-check for peace of mind? You can verify the app's safety by uploading it to [VirusTotal](https://www.virustotal.com/gui/url/0a66fe671d842b7d86e6a11be59f26a6d9cedaca3a21520c1f430c6dad56a5d5). This service scans the file using multiple antivirus programs. It's a straightforward way to see that Glucose Ticker is indeed safe to use.
 
-### My icon isn't updating?
+### Icon not updating correctly?
 
-Try the following:
+Give these a try:
 
-* Make sure you started the app using the shortcut in your Start Menu, or on your Desktop
-  * If you create your own shortcut, point it to 'Glucose Ticker.exe'. Shortcuts pointing to the 'glucose-ticker-base.exe' won't work.
-* Open the app and minimize it again
-* Make sure the app is **not pinned** to the taskbar
+- Use the Start Menu or Desktop shortcut to launch the app. 
+  Custom shortcuts   should directly target 'Glucose Ticker.exe', not 'glucose-ticker-base.exe'.
+- Open the app and minimize it again.
+- Ensure the app is **not pinned** to the taskbar.
 
-Still not working? Open an Issue or post a question in the Discussions on GitHub
+Issues persisting? Let me know by opening an Issue or starting a discussion on GitHub.
 
 ## License
 
 Made with ☕ by Niels Maerten. Licensed under the [MIT](./LICENSE) License.
 
-Did you find this app useful? Consider [buying me a coffee](https://go.niels.me/coffee) so I can make more projects like this one :)
+Found this app helpful? Consider [supporting my caffeine addiction](https://go.niels.me/coffee) to fuel more creations like this.
 
-## Contributing
-
-Pull requests are welcome :)
-
-![Windows Build](https://github.com/nielsmaerten/glucose-ticker/workflows/Windows%20Build/badge.svg?branch=release)
+[![Windows Build](https://github.com/nielsmaerten/glucose-ticker/actions/workflows/windows.yml/badge.svg)](https://github.com/nielsmaerten/glucose-ticker/actions/workflows/windows.yml)
