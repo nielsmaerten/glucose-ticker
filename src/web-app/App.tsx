@@ -24,7 +24,7 @@ const { defaultSettings, STORAGE_KEY, IPC } = constants;
 const App = () => {
   const [settings, setSettings] = useState(defaultSettings);
   const [initialized, setInitialized] = useState(false);
-  const _15seconds = 15 * 1000;
+  const timeout = 30 * 1000;
 
   const changeSetting = (key: string, value: string) => {
     setSettings({ ...settings, [key]: value });
@@ -65,7 +65,7 @@ const App = () => {
   // then redirects to Nightscout after countdown hits 0.
   const renderCountdown = () => (
     <Countdown
-      date={Date.now() + _15seconds}
+      date={Date.now() + timeout}
       renderer={(props: CountdownRenderProps) => {
         if (!props.completed) {
           return (
