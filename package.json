@@ -1,7 +1,7 @@
 {
   "name": "glucose-ticker",
   "productName": "Glucose Ticker",
-  "version": "1.0.4",
+  "version": "1.0.5-alpha",
   "description": "Live blood sugar on the Windows Taskbar",
   "main": "tmp/dist/index.js",
   "scripts": {
@@ -17,6 +17,10 @@
   "author": {
     "name": "Niels Maerten",
     "url": "https://github.com/nielsmaerten"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nielsmaerten/glucose-ticker"
   },
   "license": "MIT",
   "dependencies": {

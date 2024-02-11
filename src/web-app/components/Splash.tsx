@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import * as storage from "idb-keyval";
-import { version } from "../../../package.json";
+import { version, repository } from "../../../package.json";
 import { STORAGE_KEY, AppSettings, DONATE_LINK } from "../../shared/constants";
 
 export default (props: any) => {
@@ -17,19 +17,51 @@ export default (props: any) => {
     require("electron").shell.openExternal(DONATE_LINK);
   };
 
-  const getTimeLeft = (): string => {
-    const { seconds } = props;
-    return `${seconds} ${seconds === 1 ? "second" : "seconds"}`;
+  const onVersionClick = (e: any) => {
+    e.preventDefault();
+    require("electron").shell.openExternal(repository.url + "/releases");
   };
+
+  const getTimeLeft = (props: any): string => {
+    const { s } = props;
+    return `${s} ${s === 1 ? "second" : "seconds"}`;
+  };
+
+  const getLatestVersion = async () => {
+    const response = await fetch(
+      "https://api.github.com/repos/nielsmaerten/glucose-ticker/releases/latest"
+    );
+    const data = await response.json();
+    return data.tag_name;
+  }
+
+  const showVersionTag = () => {
+    const aLatestVersion = <a href="#" onClick={onVersionClick}>{latestVersion}</a>;
+    return (
+      <p>
+        <small>
+          v{version}
+          {latestVersion !== version && <strong> (latest: {aLatestVersion})</strong>}
+        </small>
+      </p>
+    );
+  }
+
+  useEffect(() => {
+    getLatestVersion().then(setLatestVersion);
+  });
+
+  const [latestVersion, setLatestVersion] = React.useState(version);
+
 
   return (
     <div>
-      <h2>Nightscout will be here in {getTimeLeft()}</h2>
+      <h2>Nightscout will be here in {getTimeLeft(props)}</h2>
       <hr />
       <p>Need to change your settings? Click the button below:</p>
       <button onClick={resetSettings}>Open settings</button>
-      <p>
         <hr />
+      <p>
         If you find Glucose Ticker useful, consider supporting my work with a
         coffee 😊
       </p>
@@ -41,6 +73,8 @@ export default (props: any) => {
           alt="Buy Me a Coffee at ko-fi.com"
         />
       </a>
+      <hr />
+      {showVersionTag()}
     </div>
   );
 };
