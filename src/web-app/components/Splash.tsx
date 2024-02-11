@@ -1,5 +1,6 @@
 import React from "react";
 import * as storage from "idb-keyval";
+import { version } from "../../../package.json";
 import { STORAGE_KEY, AppSettings, DONATE_LINK } from "../../shared/constants";
 
 export default (props: any) => {
@@ -16,22 +17,30 @@ export default (props: any) => {
     require("electron").shell.openExternal(DONATE_LINK);
   };
 
+  const getTimeLeft = (): string => {
+    const { seconds } = props;
+    return `${seconds} ${seconds === 1 ? "second" : "seconds"}`;
+  };
+
   return (
     <div>
-      <button onClick={resetSettings}>Click here to change settings</button>
-      <h2>
-        Showing your Nightscout in {props.s}{" "}
-        {props.s === 1 ? "second" : "seconds"}
-      </h2>
-      <h4>
-      Found this app helpful?
-      Consider.
-      {" "}
-      <a href="" onClick={onDonateClick}>supporting my caffeine addiction</a>
-      {" "}
-      to fuel more creations like this.
-      {" ☕"}
-      </h4>
+      <h2>Nightscout will be here in {getTimeLeft()}</h2>
+      <hr />
+      <p>Need to change your settings? Click the button below:</p>
+      <button onClick={resetSettings}>Open settings</button>
+      <p>
+        <hr />
+        If you find Glucose Ticker useful, consider supporting my work with a
+        coffee 😊
+      </p>
+      <a href="#" onClick={onDonateClick} target="_blank">
+        <img
+          height="36"
+          style={{ border: "0px", height: "36px" }}
+          src="https://storage.ko-fi.com/cdn/kofi3.png?v=3"
+          alt="Buy Me a Coffee at ko-fi.com"
+        />
+      </a>
     </div>
   );
 };

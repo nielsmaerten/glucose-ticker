@@ -23,13 +23,16 @@ export default class AppIcon {
 
     // If success is false, text = '??'
     if (!this.glucoseStatus.success) {
-      text = '??';
+      text = "??";
       txtColor = this.settings.color_text_inRange;
     }
 
     // If last glucose value is old (> 30 minutes) text = '~'
-    else if (this.glucoseStatus.timestamp.valueOf() < new Date().getTime() - 30 * 60 * 1000) {
-      text = '~';
+    else if (
+      this.glucoseStatus.timestamp.valueOf() <
+      new Date().getTime() - 30 * 60 * 1000
+    ) {
+      text = "~";
       txtColor = this.settings.color_text_inRange;
     }
 
