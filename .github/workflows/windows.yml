@@ -36,13 +36,13 @@ jobs:
       run: iscc setup-script.iss /Dversion=${{ steps.packagejson.outputs.version }}
           
     - name: Upload portable version
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: GlucoseTicker-${{ steps.packagejson.outputs.version }}-portable
         path: dist/win-unpacked
 
     - name: Upload installer
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: GlucoseTicker-${{ steps.packagejson.outputs.version }}-setup
         path: dist/GlucoseTicker-${{ steps.packagejson.outputs.version }}-setup.exe
