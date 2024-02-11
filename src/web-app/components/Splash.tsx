@@ -32,7 +32,7 @@ export default (props: any) => {
       "https://api.github.com/repos/nielsmaerten/glucose-ticker/releases/latest",
     );
     const data = await response.json();
-    return data.tag_name;
+    return data.tag_name || "N/A";
   };
 
   const showVersionTag = () => {
@@ -41,11 +41,12 @@ export default (props: any) => {
         {latestVersion}
       </a>
     );
+    const vVersion = "v" + version; // v1.0.0
     return (
       <p>
         <small>
-          v{version}
-          {latestVersion !== version && (
+          {vVersion}
+          {latestVersion !== vVersion && (
             <strong> (latest: {aLatestVersion})</strong>
           )}
         </small>
