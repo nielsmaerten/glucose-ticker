@@ -27,9 +27,6 @@ app.on("browser-window-focus", () => {
   GlucoseWatcher.Instance().forceUpdate();
 });
 
-// Suppress Electron deprecation notice
-app.allowRendererProcessReuse = true;
-
 // I don't know why, but for some reason Rollup refuses to
 // bundle the electron app if this line gets removed -_-
 // FIXME I guess?
