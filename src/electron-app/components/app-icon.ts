@@ -12,7 +12,7 @@ import { nativeImage } from "electron";
 export default class AppIcon {
   public constructor(
     private settings: AppSettings,
-    private glucoseStatus: GlucoseStatus
+    private glucoseStatus: GlucoseStatus,
   ) {}
 
   public async toNativeImage(): Promise<Electron.NativeImage> {
@@ -71,7 +71,7 @@ export default class AppIcon {
   private async renderPng(
     text: string,
     cssTxtColor: string,
-    cssBgColor: string
+    cssBgColor: string,
   ): Promise<Buffer> {
     // Convert CSS colors to HEX
     const white = Jimp.cssColorToHex("white");
@@ -102,7 +102,7 @@ export default class AppIcon {
         alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE,
       },
       imgSize, // maxWidth
-      imgSize // maxHeight
+      imgSize, // maxHeight
     );
 
     // Apply the txtColor by replacing white pixels with txtColor-ed pixels

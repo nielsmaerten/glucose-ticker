@@ -29,23 +29,29 @@ export default (props: any) => {
 
   const getLatestVersion = async () => {
     const response = await fetch(
-      "https://api.github.com/repos/nielsmaerten/glucose-ticker/releases/latest"
+      "https://api.github.com/repos/nielsmaerten/glucose-ticker/releases/latest",
     );
     const data = await response.json();
     return data.tag_name;
-  }
+  };
 
   const showVersionTag = () => {
-    const aLatestVersion = <a href="#" onClick={onVersionClick}>{latestVersion}</a>;
+    const aLatestVersion = (
+      <a href="#" onClick={onVersionClick}>
+        {latestVersion}
+      </a>
+    );
     return (
       <p>
         <small>
           v{version}
-          {latestVersion !== version && <strong> (latest: {aLatestVersion})</strong>}
+          {latestVersion !== version && (
+            <strong> (latest: {aLatestVersion})</strong>
+          )}
         </small>
       </p>
     );
-  }
+  };
 
   useEffect(() => {
     getLatestVersion().then(setLatestVersion);
@@ -53,14 +59,13 @@ export default (props: any) => {
 
   const [latestVersion, setLatestVersion] = React.useState(version);
 
-
   return (
     <div>
       <h2>Nightscout will be here in {getTimeLeft(props)}</h2>
       <hr />
       <p>Need to change your settings? Click the button below:</p>
       <button onClick={resetSettings}>Open settings</button>
-        <hr />
+      <hr />
       <p>
         If you find Glucose Ticker useful, consider supporting my work with a
         coffee 😊

@@ -5,7 +5,10 @@ import { API_PATH, Unit, MGDL_TO_MMOLL } from "../../shared/constants";
 
 export default class NightscoutAPI {
   private url: URL;
-  constructor(_url: string, private unit: Unit) {
+  constructor(
+    _url: string,
+    private unit: Unit,
+  ) {
     this.url = new URL(_url);
     this.url.pathname = API_PATH;
   }
