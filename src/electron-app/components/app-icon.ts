@@ -1,7 +1,8 @@
-import { GlucoseStatus } from "./nightscout-api";
-import { AppSettings } from "../../shared/constants";
-import { nativeImage } from "electron";
 import * as Jimp from "jimp";
+
+import { AppSettings } from "../../shared/constants";
+import { GlucoseStatus } from "./nightscout-api";
+import { nativeImage } from "electron";
 
 /**
  * The purpose of this class is keeping all the necessary state
@@ -20,15 +21,15 @@ export default class AppIcon {
     let bgColor = this.getBackgroundColor();
     let text = this.glucoseStatus.value.toString();
 
-    // Change icon in case of errors
-    // If last glucose value is old (> 30 minutes) text = '~'
-    if (this.glucoseStatus.timestamp.valueOf() < new Date().getTime() - 30 * 60 * 1000) {
-      text = '~';
+    // If success is false, text = '??'
+    if (!this.glucoseStatus.success) {
+      text = '??';
       txtColor = this.settings.color_text_inRange;
     }
-    // If success is false, text = '??'
-    else if (!this.glucoseStatus.success) {
-      text = '??';
+
+    // If last glucose value is old (> 30 minutes) text = '~'
+    else if (this.glucoseStatus.timestamp.valueOf() < new Date().getTime() - 30 * 60 * 1000) {
+      text = '~';
       txtColor = this.settings.color_text_inRange;
     }
 
