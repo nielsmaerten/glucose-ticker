@@ -76,7 +76,14 @@ const App = () => {
             ></Splash>
           );
         } else {
-          window.location.href = settings.nsUrl;
+          // Remove username (api secret) from URL before redirecting
+          let href = settings.nsUrl;
+          if (href.includes("@")) {
+            const url = new URL(href);
+            url.username = "";
+            href = url.toString();
+          }
+          window.location.href = href;
           return <p>Getting Nightscout ...</p>;
         }
       }}
