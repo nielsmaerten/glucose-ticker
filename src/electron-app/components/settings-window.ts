@@ -27,6 +27,7 @@ function createWindow() {
     webPreferences: {
       // Required to receive settings from the webapp
       nodeIntegration: true,
+      contextIsolation: false,
     },
   });
 
