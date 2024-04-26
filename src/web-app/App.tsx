@@ -61,6 +61,8 @@ const App = () => {
     });
   };
 
+  const isGluroo = settings?.nsUrl?.includes("ns.gluroo.com");
+
   // Renders the Splash component at first,
   // then redirects to Nightscout after countdown hits 0.
   const renderCountdown = () => (
@@ -70,6 +72,7 @@ const App = () => {
         if (!props.completed) {
           return (
             <Splash
+              isGluroo={isGluroo}
               s={props.seconds}
               ms={props.milliseconds}
               total={props.total}
@@ -78,13 +81,14 @@ const App = () => {
         } else {
           // Remove username (api secret) from URL before redirecting
           let href = settings.nsUrl;
-          if (href.includes("@")) {
+          if (isGluroo) href = "https://app.gluroo.com";
+          else if (href.includes("@")) {
             const url = new URL(href);
             url.username = "";
             href = url.toString();
           }
           window.location.href = href;
-          return <p>Getting Nightscout ...</p>;
+          return <p>Getting {isGluroo ? "Gluroo" : "Nightscout"} ...</p>;
         }
       }}
     ></Countdown>

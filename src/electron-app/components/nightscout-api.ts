@@ -14,8 +14,9 @@ export default class NightscoutAPI {
     // If url has a username, we're using api-secret auth
     if (this.url.username) {
       const decoded = decodeURIComponent(this.url.username);
-      const authSecret = require("crypto").createHash("sha1").update(decoded).digest("hex");
-      this.apiSecret = authSecret
+      const hash = require("crypto").createHash("sha1");
+      const authSecret = hash.update(decoded).digest("hex");
+      this.apiSecret = authSecret;
       this.url.username = "";
     }
     this.url.pathname = API_PATH;
@@ -29,7 +30,7 @@ export default class NightscoutAPI {
           rejectUnauthorized: false,
         }),
         // If we have an api secret, use it as a header
-        headers: this.apiSecret ? { 'api-secret': this.apiSecret } : {},
+        headers: this.apiSecret ? { "api-secret": this.apiSecret } : {},
       });
     } catch (error) {
       console.error("Error fetching current glucose", error);

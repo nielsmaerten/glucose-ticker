@@ -16,7 +16,7 @@ export enum IPC {
 }
 
 export const STORAGE_KEY = "app-settings";
-export const API_PATH = "/api/v1/entries/current.json";
+export const API_PATH = "/api/v1/entries.json";
 //export const ICON_SIZE = 128;
 //export const ICON_TEXT_MARGIN = 10;
 export const MGDL_TO_MMOLL = 18;
