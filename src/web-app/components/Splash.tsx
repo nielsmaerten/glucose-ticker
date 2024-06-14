@@ -59,10 +59,12 @@ export default (props: any) => {
   });
 
   const [latestVersion, setLatestVersion] = React.useState(version);
+  const targetApp = props.isGluroo ? "Gluroo" : "Nightscout";
+  const timeLeft = getTimeLeft(props);
 
   return (
     <div>
-      <h2>Nightscout will be here in {getTimeLeft(props)}</h2>
+      <h2>{`${targetApp} will be here in ${timeLeft}`}</h2>
       <hr />
       <p>Need to change your settings? Click the button below:</p>
       <button onClick={resetSettings}>Open settings</button>
