@@ -1,6 +1,5 @@
-# Glucose Ticker for Windows
-Your latest glucose reading. Just a quick
-glance away on the Windows Taskbar:
+# Nightscout glucose on the Windows Taskbar
+What it looks like:
 ![Screenshot1](./screenshots/win-11.png)
 
 
