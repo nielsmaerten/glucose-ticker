@@ -24,7 +24,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.29.0",
+    "axios": "^1.0.0",
     "jimp": "^0.22.0"
   },
   "devDependencies": {
